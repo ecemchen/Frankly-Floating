@@ -1,0 +1,24 @@
+* { /* to apply to all elements */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* to include padding and border in the total width and height of elements */
+}
+
+/* centering html element horizontally and vertically using flexbox */
+
+body { /*take the parent, in my case parent -> body element */ 
+    width: 100vw; /* vw: 100 viewport width: 100% of the viewport width = entire browser window width */
+    height: 100vh; /* vh: 100 viewport hight: 100% of the viewport height = entire browser window height*/
+    display: flex ; /* flex affects how the children of the parent should be displayed */
+    /* Now body(parent) has a display propert and its set to flex. Therefore, we can give additional props. such as "justify-content"   */
+    justify-content: center; /* centers the children horizontally */
+    align-items: center; 
+    /* centers the child vertically, based on the parent=body. which covers the entire height of browser here. 
+    Therefore, its gonna look at the center of the browser window*/
+}
+#canvas1 { /* take the child, in my case child -> canvas1 element */
+    width: 800px; /* width of the canvas */
+    height: 500px; /* height of the canvas */
+    border: 4px solid black; /* border of the canvas */
+}
+
