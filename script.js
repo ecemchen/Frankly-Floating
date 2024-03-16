@@ -63,31 +63,42 @@ class Player {  // declared a js es6 class called 'Player'
         this.spriteHeight = 327; // spriteHeight of 1 row (981px/3 rows)
     }
 
-//I need to move the player towards the mouse: I will create a method 'update' method: it will update player position, 
-//how: 1st compare player's current position with the mouse position
+    //I need to move the player towards the mouse: I will create a method 'update' method: it will update player position, 
+    //how: 1st compare player's current position with the mouse position
 
-update () { 
-    const dx = this.x - mouse.x; 
-    const dy = this.y - mouse.y;
-    if (mouse.x != this.x) { // if mouse x is not equal to player x
-        this.x -= dx/30; // move the player towards the mouse, divide by 20 to slow down the speed so i can see the animation
+    update () { 
+        const dx = this.x - mouse.x; 
+        const dy = this.y - mouse.y;
+        if (mouse.x != this.x) { // if mouse x is not equal to player x
+            this.x -= dx/30; // move the player towards the mouse, divide by 20 to slow down the speed so i can see the animation
+        }
+        if (mouse.y != this.y) { // if mouse y is not equal to player y
+            this.y -= dy/30; // move the player towards the mouse
+        }
     }
-    if (mouse.y != this.y) { // if mouse y is not equal to player y
-        this.y -= dy/30; // move the player towards the mouse
+
+    draw() {
+        // drawing a line btw the player char and the click: 
+        //this part is not necessary but I need to see the direction of moment so I use it to see how player char and mouse click is working together
+        //here it simply says: if the mouse.click is true, draw a line from the mouse position to the player.
+        if (mouse.click) {
+            ctx.lineWidth = 0.2; // line width
+            ctx.beginPath(); // start drawing
+            ctx.moveTo(this.x, this.y); // starting point of the line = current player position
+            ctx.lineTo(mouse.x, mouse.y); // ending point of the line = current mouse position
+            ctx.stroke(); // to connect these 2 points (moveTo and lineTo) with a line
+        }
+
+        // draw the player char:
+        ctx.fillStyle = 'red'; // fill color of the circle
+        ctx.beginPath(); // start drawing
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); // draw a circle on this.x and this.y coordinates (current position of player char) with this.radius. 
+        ctx.fill(); // draw the circle.
+        ctx.closePath(); // close the path / circle
     }
 }
-
-draw
-
-}
+const player = new Player(); // create a new instance of the Player class and store it in a variable called 'player'
 
 
-
-
-
-
-
-
-// Player Char
-// Bubbles
-// Animation Loop
+//------------------------BUBBLES---------------------------
+//----------------------ANIMATION LOOP----------------------
